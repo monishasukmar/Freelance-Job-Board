@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Job Board</title>
+</head>
+<style>
+
+ul{
+  list-style-type: none;  
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+li{float: left;}
+
+li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.applications{
+    box-shadow: 0 0 10px;
+    padding: 20px;
+    margin: 2cm;
+}
+
+.applications h3{
+    text-align: center;
+}
+
+.left-nav {
+  top: 23px;
+  left: 0;
+  height: 100%;
+  width: 20%;
+  padding: 10px;
+  overflow: auto;
+}
+
+
+</style>
+<body>
+    <div>  
+        <ul>
+            <li><a href="file:///D:/Mock%20Interview/Home/index.html">Home</a></li>
+            <li><a href="file:///D:/Mock%20Interview/Job%20posting/index.html">Job Posting</a></li>
+            <li><a href="file:///D:/Mock%20Interview/Job%20application/index.html">Job Application</a></li>
+            <div class="search-container">
+                <form action="">
+                  <input type="text" placeholder="Search.." name="search">
+                </form>
+            </div>   
+        </ul>
+    </div>
+
+<div class="left-nav">
+    <h3>Filters</h3>
+  <div class="filter-section">
+    <h3>Hob Titles</h3>
+    <label><input type="checkbox" class="filter title" value="front-end">front-end</label>
+    <label><input type="checkbox" class="filter title" value="backend">backend</label>
+    <label><input type="checkbox" class="filter title" value="Statistics">statistics</label>
+
+  </div>
+  <div class="filter-section">
+    <h3>Company Names</h3>
+    <label><input type="checkbox" class="filter Company" value="Abcmed">Abcmed</label>
+    <label><input type="checkbox" class="filter Company" value="301-600">ZZZtech</label>
+  </div>
+</div>
+
+<h1 align="center">Job Applications</h1>
+    <div class="applications" data-title="Statistics" data-company="Abcmed">
+        <h3>Statistician</h3>
+        <p>Abcmed</p>
+        <p>We need rightful candiadtes who are good with problem solving and mathematical skills to solve real world problems.</p>
+        <p>Skills required: </p>
+        <p>Compensation</p>
+        <p>Contact information</p>
+        <button>Apply now</button>
+    </div>
+
+    <div class="applications" data-title="front-end" data-company="ZZZtech">
+        <h3>Job title1</h3>
+        <p>ZZZtech</p>
+        <p>We need rightful candiadtes who are good with problem solving and mathematical skills to solve real world problems</p>
+        <p>Skills required: </p>
+        <p>Compensation</p>
+        <p>Contact information</p>
+        <button>Apply now</button>
+    </div>
+
+    <div class="applications" data-title="backend" data-company="Abcmed">
+        <h3>Job title1</h3>
+        <p>Abcmed</p>
+        <p>We need rightful candiadtes who are good with problem solving and mathematical skills to solve real world problems</p>
+        <p>Skills required: </p>
+        <p>Compensation</p>
+        <p>Contact information</p>
+        <button>Apply now</button>
+    </div>
+ 
+    <div class="applications" data-title="backend" data-company="zzztech">
+        <h3>Job title1</h3>
+        <p>ZZZtech</p>
+        <p>We need rightful candiadtes who are good with problem solving and mathematical skills to solve real world problems</p>
+        <p>Skills required: </p>
+        <p>Compensation</p>
+        <p>Contact information</p>
+        <button>Apply now</button>
+    </div>
+
+    <script>
+        document.querySelectorAll('.filter').forEach(element => {
+            element.addEventListener('change', function() {
+                const selectedTitle = Array.from(document.querySelectorAll('.filter.title:checked')).map(checkbox => checkbox.value);
+                const selectedCompany = Array.from(document.querySelectorAll('.filter.company:checked')).map(checkbox => checkbox.value);
+        
+                document.querySelectorAll('.applications').forEach(application => {
+                    const Title = application.getAttribute('data-title');
+                    const Company =application.getAttribute('data-company');
+        
+                    const TitleMatch = selectedTitle.length === 0 || selectedTitle.includes(Title);
+                    const CompanyMatch = selectedCompany.length === 0 || selectedCompany.includes(Company);
+
+                    if (TitleMatch && CompanyMatch) {
+                        application.style.display = '';
+                    } else{
+                        application.style.display = 'none'
+                    }
+                });
+            });
+        });
+
+        </script>
+</body>
+</html>
+
+   
